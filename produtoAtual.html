@@ -40,6 +40,7 @@
                 <a class="quote-btn" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511985345873?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20área%20de%20Musculação.">Conheça a Área</a>
             </div>
         </article>
+
         <!-- 2. Artes Marciais com Destaque -->
         <article class="service service--highlight reveal left">
             <div class="service-media">
@@ -51,14 +52,13 @@
                 <p>Kickboxing, Muay Thai, Jiu-Jitsu, Boxe e MMA para todos os níveis. Aprenda a técnica correta e supere seus limites.</p>
                 <span class="price">Agende seu treino cortesia sem compromisso</span>
                 <a class="quote-btn quote-btn--highlight" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511985345873?text=Ol%C3%A1!%20Quero%20agendar%20minha%20AULA%20EXPERIMENTAL%20GRATUITA%20de%20Artes%20Marciais!">Agendar Aula Grátis</a>
-
             </div>
         </article>
 
         <!-- 3. Horários de Funcionamento & Grade de Aulas -->
         <article class="service reveal right">
             <div class="service-media">
-                <img src="imagens/GradeDeHorarios.JPG" alt="Grade de Horários e Funcionamento" loading="lazy">
+                <img src="imagens/GradeDeHorarios.JPG" alt="Grade de Horários e Funcionamento" class="clickable-img" loading="lazy">
             </div>
             <div class="service-body">
                 <h2>Grade de Horários</h2>
@@ -71,7 +71,7 @@
         <!-- 4. Planos & Convênios (TotalPass / Wellhub) -->
         <article class="service reveal left">
             <div class="service-media">
-                <img src="imagens/Planos.PNG" alt="Planos Serginho Team, TotalPass e Wellhub" loading="lazy">
+                <img src="imagens/Planos.JPG" alt="Planos Serginho Team, TotalPass e Wellhub" class="clickable-img" loading="lazy">
             </div>
             <div class="service-body">
                 <h2>Planos & Benefícios</h2>
@@ -91,7 +91,38 @@
     </footer>
 </main>
 
+<!-- Modal de Ampliação de Imagem (Não altera nada do layout principal) -->
+<div id="imageModal" class="image-modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="imgExpanded" alt="Imagem Ampliada">
+</div>
+
 <script src="js/Script.js"></script>
 <script src="js/servicos.js"></script>
+
+<!-- Script para abrir/fechar a imagem ampliada ao clicar -->
+<script>
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("imgExpanded");
+    const clickableImages = document.querySelectorAll(".clickable-img");
+    const closeBtn = document.querySelector(".modal-close");
+
+    clickableImages.forEach(img => {
+        img.addEventListener("click", function() {
+            modal.style.display = "flex";
+            modalImg.src = this.src;
+        });
+    });
+
+    closeBtn.addEventListener("click", function() {
+        modal.style.display = "none";
+    });
+
+    modal.addEventListener("click", function(e) {
+        if (e.target !== modalImg) {
+            modal.style.display = "none";
+        }
+    });
+</script>
 </body>
 </html>
